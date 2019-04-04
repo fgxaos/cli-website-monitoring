@@ -1,0 +1,22 @@
+{
+  "name": "cli-website-monitoring",
+  "version": "1.0.0",
+  "description": "Website availability and performance monitoring application",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fgxaos/cli-website-monitoring.git"
+  },
+  "author": "fgxaos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fgxaos/cli-website-monitoring/issues"
+  },
+  "homepage": "https://github.com/fgxaos/cli-website-monitoring#readme"
+}
