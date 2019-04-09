@@ -1,3 +1,6 @@
 # Node files
 package-lock.json
 node_modules
+
+example.js
+
