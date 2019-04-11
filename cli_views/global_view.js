@@ -9,11 +9,13 @@ const settingsMenu = require("./settings/settings");
 let interval;
 
 function globalViewMenu () {
+	const loginMenu = require("./login/login").default;
+
 	(async function() {
-		const main_menu =
+		const globalViewMenu =
 			{
 				type: "select",
-				name: "mainMenu",
+				name: "globalViewMenu",
 				message: "What do you want to do?",
 				choices: [
 					{ title: "Display monitored websites", value: "display", disabled: false },
@@ -23,11 +25,12 @@ function globalViewMenu () {
 				]
 			};
 
-		const answer = await prompt(main_menu, {
+		const answer = await prompt(globalViewMenu, {
 			onCancel: cleanup,
 			onSubmit: cleanup
 		});
-		switch (answer.maiMenu) {
+		console.log(answer);
+		switch (answer.globalViewMenu) {
 			case "display":
 				console.log("Global display");
 				break;
@@ -43,6 +46,7 @@ function globalViewMenu () {
 				break;
 			case "logout":
 				console.log("Logged out!");
+				loginMenu();
 				break;
 		}
 		
