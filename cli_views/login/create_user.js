@@ -9,11 +9,13 @@ TODO:
 
 const prompt = require("prompts");
 
+const userController = require("../../users/userController");
+
 let interval;
 
 function userCreation () {
 	// Modules
-	const loginMenu = require("./login.js");
+	const loginMenu = require("./login.js").default;
 
 	(async function() {
 		const questions = [
@@ -31,13 +33,33 @@ function userCreation () {
 				message: "What is your password?"
 				// TODO: Add a validation step, by making the user type their password one more time
 			},
+			{
+				type: "text",
+				name: "firstName",
+				message: "What is your first name?",
+				initial: "John"
+			},
+			{
+				type: "text",
+				name: "lastName",
+				message: "What is your last name?",
+				initial: "Doe"
+			},
+			{
+				type: "text",
+				name: "email",
+				message: "What is your email address?"
+			}
 		];
 
 		const answers = await prompt(questions, {
 			onCancel: cleanup,
 			onSubmit: cleanup
 		});
-		console.log(answers);
+		
+		// Create the user with the answer
+		userController.register(answers);
+		
 		console.log("Account created!");
 		loginMenu();
 
