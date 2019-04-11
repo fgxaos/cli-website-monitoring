@@ -30,30 +30,39 @@ function loginMenu () {
 			onCancel: cleanup,
 			onSubmit: cleanup
 		});
-		console.log(answer);
+
+		// console.log(answer);
+
+		const closeServer = require("../../app");
+
 		switch (answer.loginMenu) {
-			case "login":
-				console.log("Log in");
-				// Start `enter_credentials.js`
-				enterCredentials();
-				break;
+		case "login":
+			console.log("Log in");
+			// Start `enter_credentials.js`
+			enterCredentials(0);
+			break;
 				
-			case "signup":
-				console.log("Sign_up");
-				// Start `create_user.js`
-				signUp();
-				break;
+		case "signup":
+			console.log("Sign_up");
+			// Start `create_user.js`
+			signUp();
+			break;
 				
-			case "forgot_password":
-				console.log("Forgot your password....");
-				// Start `password_recover.js`
-				passwordRecover();
-				break;
+		case "forgot_password":
+			console.log("Forgot your password....");
+			// Start `password_recover.js`
+			passwordRecover();
+			break;
 				
-			case "Quit":
-				console.log("I quit!");
-				// Exit program
-				break;
+		case "quit":
+			// Exit program
+			try {
+				closeServer();
+			} catch (error) {
+				console.log(error);
+			}
+			process.exit();
+			break;
 		}
 	})();
 }
