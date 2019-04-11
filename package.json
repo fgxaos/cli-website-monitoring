@@ -2,12 +2,12 @@
   "name": "cli-website-monitoring",
   "version": "1.0.0",
   "description": "Website availability and performance monitoring application",
-  "main": "index.js",
+  "main": "app.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "npm test"
+    "start": "node ./app.js"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,21 @@
   "bugs": {
     "url": "https://github.com/fgxaos/cli-website-monitoring/issues"
   },
-  "homepage": "https://github.com/fgxaos/cli-website-monitoring#readme"
+  "homepage": "https://github.com/fgxaos/cli-website-monitoring#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "clui": "^0.3.6",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-jwt": "^5.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.5.0",
+    "prettier": "^1.16.4",
+    "prompts": "^2.0.4"
+  }
 }
