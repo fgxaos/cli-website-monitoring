@@ -38,12 +38,14 @@ function loginMenu () {
 		switch (answer.loginMenu) {
 		case "login":
 			console.log("Log in");
+			console.clear();
 			// Start `enter_credentials.js`
 			enterCredentials(0);
 			break;
 				
 		case "signup":
 			console.log("Sign_up");
+			console.clear();
 			// Start `create_user.js`
 			signUp();
 			break;
@@ -51,12 +53,14 @@ function loginMenu () {
 		case "forgot_password":
 			console.log("Forgot your password....");
 			// Start `password_recover.js`
+			console.clear();
 			passwordRecover();
 			break;
 				
 		case "quit":
 			// Exit program
 			try {
+				console.clear();
 				closeServer();
 			} catch (error) {
 				console.log(error);
