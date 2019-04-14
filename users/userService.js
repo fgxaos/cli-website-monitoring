@@ -65,10 +65,34 @@ async function update (id, userParam) {
 	await user.save();
 }
 
+async function addMonitoredWebsite (id, monitoredWebsite) {
+	const user = await User.findById(id);
+	let changed = false;
+	// Get previous monitored websites
+	let prevMonitored = user.monitoredWebsites;
+	// Check if the website is already monitored
+	let prevWebsite = prevMonitored.filter(object => object.website_url === monitoredWebsite.website_url);
+	if (prevWebsite.length > 0) {
+		let prevWebCheckTime = prevWebsite.filter(object => object.checkTimeInterval === monitoredWebsite.checkTimeInterval);
+		if (prevWebCheckTime.length === 0) {
+			// If the check intervals are not the same, build two different objects
+			prevMonitored.push(monitoredWebsite);
+			changed = true;
+			// Note: To change stats, use a different menu
+		} 
+	} 
+	else {
+		prevMonitored.push(monitoredWebsite);
+		changed = true;
+	}
+	// Save
+	user.save();
+	return changed;
+}
+
 async function _delete (id) {
 	await User.findByIdAndRemove(id);
 }
-
 
 module.exports = {
 	authenticate, 
@@ -76,5 +100,6 @@ module.exports = {
 	getById,
 	create,
 	update,
-	delete: _delete
+	delete: _delete,
+	addMonitoredWebsite
 };
