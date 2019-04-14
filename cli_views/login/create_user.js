@@ -59,7 +59,7 @@ function userCreation () {
 		
 		// Create the user with the answer
 		userController.register(answers);
-		
+		console.clear();
 		console.log("Account created!");
 		loginMenu();
 
