@@ -8,7 +8,8 @@ const userSchema = new Schema({
     lastName: { type: String, required: true },
     createdDate: { type: Date, default: Date.now },
     email: { type: String },
-    lastPasswordReset: { type: Date, default: Date.now }
+    lastPasswordReset: { type: Date, default: Date.now },
+    monitoredWebsites: { type: Array }
 });
 
 userSchema.set("toJSON", { virtuals: true });
