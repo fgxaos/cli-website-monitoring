@@ -3,14 +3,14 @@
 const prompt = require("prompts");
 
 // Menus
-const monitored_menu = require("./monitored_websites");
+const monitored_menu = require("./monitoring/monitored_websites");
 const settingsMenu = require("./settings/settings");
+
 
 let interval;
 
-function globalViewMenu () {
-	const loginMenu = require("./login/login").default;
-
+function globalViewMenu (token) {
+	const loginMenu = require("./login/login");
 	(async function() {
 		const globalViewMenu =
 			{
@@ -31,26 +31,28 @@ function globalViewMenu () {
 		});
 		console.log(answer);
 		switch (answer.globalViewMenu) {
-			case "display":
-				console.log("Global display");
-				break;
-			case "manage":
-				console.log("Manage time");
-				// Start `monitored_websites.js`
-				monitored_menu();
-				break;
-			case "settings":
-				console.log("Settings");
-				// Start `settings.js`
-				settingsMenu();
-				break;
-			case "logout":
-				console.log("Logged out!");
-				loginMenu();
-				break;
+		case "display":
+			console.log("Global display");
+			console.clear();
+			break;
+		case "manage":
+			console.log("Manage time");
+			console.clear();
+			// Start `monitored_websites.js`
+			monitored_menu(token);
+			break;
+		case "settings":
+			console.log("Settings");
+			console.clear();
+			// Start `settings.js`
+			settingsMenu(token);
+			break;
+		case "logout":
+			console.log("Logged out!");
+			console.clear();
+			loginMenu(token);
+			break;
 		}
-		
-		// console.log(answer);
 	})();
 }
 

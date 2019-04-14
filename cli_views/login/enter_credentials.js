@@ -42,11 +42,13 @@ function credentialsInfo (countIterations) {
         
 		userController
 			.authenticate(answers)
-			.then(correctCredentials => {
-				if (correctCredentials) {
+			.then(token => {
+				if (token) {
+					console.clear();
 					console.log("Successfully connected");
-					globalViewMenu();
+					globalViewMenu(token);
 				} else if (countIterations < 2) {
+					console.clear();
 					console.log("ERROR: Wrong username or wrong password");
 					credentialsInfo(countIterations + 1);
 				} else {
