@@ -31,7 +31,7 @@ module.exports = {
 async function authenticate(req) {
 	let tryAuth = await userService.authenticate(req);
 	if (tryAuth) {
-		return true;
+		return tryAuth.token;
 	} else {
 		return false;
 	}
