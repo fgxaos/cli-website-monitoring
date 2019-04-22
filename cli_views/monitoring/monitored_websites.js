@@ -6,6 +6,7 @@ let interval;
 
 // Menus
 const addMonitoredWebsiteMenu = require("./add_monitored_websites");
+const removeMonitoredWebsiteMenu = require("./remove_monitored_websites");
 
 function launchMenu (token) {
 	const globalViewMenu = require("../global_view");
@@ -27,23 +28,20 @@ function launchMenu (token) {
 			onCancel: cleanup,
 			onSubmit: cleanup
 		});
+		console.clear();
 		switch (answer.monitored_websites_menu) {
 		case 0:
-			console.log("Add a monitored website");
-			console.clear();
 			// Access monitored DB and add one
 			addMonitoredWebsiteMenu(token);
 			break;
 		case 1:
-			console.log("Remove a monitored website");
 			// Access monitored DB and remove one
+			removeMonitoredWebsiteMenu(token);
 			break;
 		case 2:
-			console.log("Change statistics of a website");
 			// Change statistics of a website
 			break;
 		case 3:
-			console.log("Back");
 			// Go back to `global_view.js`
 			globalViewMenu(token);
 			break;
