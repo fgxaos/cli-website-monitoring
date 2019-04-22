@@ -21,17 +21,6 @@ function launchMenu(token) {
 				validate: text => (validURL.isUri(text) ? true : "Please enter a valid URL")
 			},
 			{
-				type: "multiselect",
-				name: "chosen_stats",
-				message: "What statistics do you want to compute (select with space bar)? ",
-				choices: [
-					{ title: "Red", value: "#ff0000" },
-					{ title: "Green", value: "#00ff00" },
-					{ title: "Yellow", value: "#ffff00", disabled: true },
-					{ title: "Blue", value: "#0000ff" }
-				]
-			},
-			{
 				type: "number",
 				name: "checkTimeInterval",
 				message: "Check intervals (in milliseconds, higher than 100)? ",
@@ -52,9 +41,9 @@ function launchMenu(token) {
 		// Go back to monitored websites menu
 		console.clear();
 		if (changed) {
-			console.log("Website added!");
+			console.log("\x1b[32m", "Website added!");
 		} else {
-			console.log("Website already monitored");
+			console.log("\x1b[31m", "Website already monitored");
 		}
 		monitoredWebsitesMenu(token);
 
