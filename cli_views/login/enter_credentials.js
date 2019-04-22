@@ -12,12 +12,12 @@ const prompt = require("prompts");
 
 
 const userController = require("../../users/userController");
-const globalViewMenu = require("../global_view");
 
 let interval;
 
 function credentialsInfo (countIterations) {
-    const loginMenu = require("./login.js").default;
+	const globalViewMenu = require("../global_view");
+    const loginMenu = require("./login.js");
 
 	(async function () {
 		const questions = [
@@ -37,7 +37,6 @@ function credentialsInfo (countIterations) {
 		const answers = await prompt(questions, {
 			onCancel: cleanup,
 			onSubmit: cleanup
-			// When you have the username and the password, check in the database if those are correct
 		});
         
 		userController
@@ -45,15 +44,14 @@ function credentialsInfo (countIterations) {
 			.then(token => {
 				if (token) {
 					console.clear();
-					console.log("Successfully connected");
+					console.log("\x1b[32m", "Successfully connected");
 					globalViewMenu(token);
 				} else if (countIterations < 2) {
 					console.clear();
-					console.log("ERROR: Wrong username or wrong password");
+					console.log("\x1b[31m", "ERROR: Wrong username or wrong password");
 					credentialsInfo(countIterations + 1);
 				} else {
-					// Write this in red
-					console.log("ERROR: Too many mistakes");
+					console.log("\x1b[31m", "ERROR: Too many mistakes");
 					loginMenu();
 				}
 			})
