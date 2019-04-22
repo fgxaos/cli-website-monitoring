@@ -23,10 +23,10 @@ function launchSettingsMenu () {
         	name: "settingsMenu",
         	message: "What do you want to do?",
         	choices: [
-        		{ title: "Change username", value: "changeUsername", disabled: false }, 
-        		{ title: "Change password", value: "changePassword", disabled: false },
-        		{ title: "Set email address", value: "email", disabled: false},
-        		{ title: "Go back", value: "back", disabled: false}
+        		{ title: "Change username", value: "changeUsername", disabled: true }, 
+        		{ title: "Change password", value: "changePassword", disabled: true },
+        		{ title: "Set email address", value: "email", disabled: true },
+        		{ title: "Go back", value: "back", disabled: false }
         	]
         };
         
