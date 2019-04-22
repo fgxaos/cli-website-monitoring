@@ -5,6 +5,8 @@ const prompt = require("prompts");
 // Menus
 const monitored_menu = require("./monitoring/monitored_websites");
 const settingsMenu = require("./settings/settings");
+const globalDisplayMenu = require("./display/display_menu");
+const displayLogs = require("./display_logs");
 
 
 let interval;
@@ -19,6 +21,7 @@ function globalViewMenu (token) {
 				message: "What do you want to do?",
 				choices: [
 					{ title: "Display monitored websites", value: "display", disabled: false },
+					{ title: "Display logs", value: "logs", disabled: false },
 					{ title: "Manage monitored websites", value: "manage", disabled: false },
 					{ title: "Settings", value: "settings", disabled: false},
 					{ title: "Logout", value: "logout", disabled: false }
@@ -29,27 +32,21 @@ function globalViewMenu (token) {
 			onCancel: cleanup,
 			onSubmit: cleanup
 		});
-		console.log(answer);
+		console.clear();
 		switch (answer.globalViewMenu) {
 		case "display":
-			console.log("Global display");
-			console.clear();
+			globalDisplayMenu(token);
+			break;
+		case "logs":
+			displayLogs(token);
 			break;
 		case "manage":
-			console.log("Manage time");
-			console.clear();
-			// Start `monitored_websites.js`
 			monitored_menu(token);
 			break;
 		case "settings":
-			console.log("Settings");
-			console.clear();
-			// Start `settings.js`
 			settingsMenu(token);
 			break;
 		case "logout":
-			console.log("Logged out!");
-			console.clear();
 			loginMenu(token);
 			break;
 		}
