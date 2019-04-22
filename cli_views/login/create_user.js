@@ -14,24 +14,22 @@ const userController = require("../../users/userController");
 let interval;
 
 function userCreation () {
-	// Modules
-	const loginMenu = require("./login.js").default;
-
 	(async function() {
+		const loginMenu = require("./login.js");
 		const questions = [
 			{
 				type: "text",
 				name: "username",
 				message: "What it your username?",
 				initial: "username",
-				// TODO: Create `isCorrectForm(value)`, that returns if the username only has numbers and ASCII letters
+				// Improvement: Create `isCorrectForm(value)`, that returns if the username only has numbers and ASCII letters
 				// validate: value => (isCorrectForm(value) ? "Please, use only numbers and ASCII letters" : true)
 			},
 			{
 				type: "password",
 				name: "password",
 				message: "What is your password?"
-				// TODO: Add a validation step, by making the user type their password one more time
+				// Improvement: Add a validation step, by making the user type their password one more time
 			},
 			{
 				type: "text",
