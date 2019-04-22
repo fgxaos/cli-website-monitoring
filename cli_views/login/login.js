@@ -21,7 +21,7 @@ function loginMenu () {
 				choices: [
 					{ title: "Log in", value: "login", disabled: false },
 					{ title: "Sign up", value: "signup", disabled: false },
-					{ title: "Forgot your password?", value: "forgot_password", disabled: false },
+					{ title: "Forgot your password?", value: "forgot_password", disabled: true },
 					{ title: "Quit", value: "quit", disabled: false }
 				]
 			};
@@ -37,22 +37,17 @@ function loginMenu () {
 
 		switch (answer.loginMenu) {
 		case "login":
-			console.log("Log in");
 			console.clear();
-			// Start `enter_credentials.js`
 			enterCredentials(0);
 			break;
 				
 		case "signup":
-			console.log("Sign_up");
 			console.clear();
-			// Start `create_user.js`
 			signUp();
 			break;
 				
 		case "forgot_password":
 			console.log("Forgot your password....");
-			// Start `password_recover.js`
 			console.clear();
 			passwordRecover();
 			break;
